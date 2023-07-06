@@ -1,0 +1,29 @@
+//User function Template for C++
+
+class Solution{
+    public:
+    vector<long long int> twoOddNum(long long int Arr[], long long int N)  {
+        int XOR = 0;
+        for(int i = 0 ;  i < N ; i++){
+            XOR = XOR ^ Arr[i];
+        }
+        int count = 0;
+        while((XOR & 1) != 1){
+            count++;
+            XOR = XOR >> 1;
+        }
+        int XOR1 = 0;
+        int XOR2 = 0;
+        for(int i = 0 ; i < N ; i++){
+            if(Arr[i] & (1 << count)){
+                XOR2 = XOR2 ^ Arr[i];
+            }
+            else{
+                XOR1 = XOR1 ^ Arr[i];
+            }
+        }
+        if(XOR1 > XOR2) 
+            return {XOR1, XOR2};  
+        return {XOR2, XOR1};
+    }
+};

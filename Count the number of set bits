@@ -1,0 +1,16 @@
+//User function Template for C++
+
+class Solution{
+    public:
+    int powerOfTwo(int n) {
+        return log2(n); 
+    }
+    int countSetBits(int n){
+        if(n == 0) return 0;
+        int x = powerOfTwo(n);
+        int ans1 = x * (1 << (x-1));
+        int ans2 = n - (1 << x) + 1;
+        int val = n - (1 << x);
+        return ans1 + ans2 + countSetBits(val);
+    }
+};

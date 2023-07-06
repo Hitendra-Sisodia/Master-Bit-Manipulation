@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int getXOR(int n) {
+        switch(n % 4) {
+            case 0: return n;
+            case 1: return 1;
+            case 2: return n + 1;
+            case 3: return 0;
+        }
+        return 0;
+    }
+    int findXOR(int l, int r) {
+        // using bit manuplation
+        return(getXOR(l-1) ^ getXOR(r));
+    }
+};

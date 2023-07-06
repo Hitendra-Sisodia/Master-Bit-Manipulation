@@ -1,0 +1,15 @@
+class Solution{
+	public:
+	vector<int>AllPrimeFactors(int N) {
+	    // prime factors of number i * i <= N  ~ i <= sqrt(N)
+	    // prime factors always less than sqrt(number)
+	    vector<int> ans;
+	    for(int i=2 ; i * i <= N ; i++){
+	        if((N % i) == 0){
+	            ans.push_back(i);
+	            N /= i;
+	        }
+	    }
+	    return ans;
+	}
+};

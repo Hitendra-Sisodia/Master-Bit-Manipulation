@@ -1,0 +1,30 @@
+class Solution {
+  public:
+  bool prime[1000000];
+    void fun(int n) { 
+        for(int i=2;i<=n;i++){    // first create seive and mark all the prime numebrs
+            prime[i]=true;
+        }
+        for(int i=2;i*i<=n;i++){
+            if(prime[i]==true){
+                for(int j=i*i ; j<=n;j+=i){
+                     prime[j]=false;
+                }
+             }
+         }
+    }
+    vector<int> findPrimeFactors(int n) {
+        fun(n);
+        vector<int> ans;
+        
+        for(int i=2;i<=n;++i){
+            if(prime[i]==1){ 
+               while(n%i==0){  
+                    n/=i;    // when you find prime number divide it as many time as possible 
+                    ans.push_back(i);
+               }
+            }
+        }
+        return ans;
+    }
+};
